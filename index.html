@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ganesh Goud Padimela — Senior UI/UX Engineer</title>
+<meta name="description" content="Senior UI/UX Engineer with 9+ years combining UX design and front-end development — Vue.js, Figma, design systems, Three.js/WebGL, and accessible enterprise interfaces.">
+<style>
+  :root{
+    --bg:#faf9f7; --surface:#ffffff; --ink:#17141f; --muted:#5d586e; --line:#e8e4de;
+    --violet:#6c4cf1; --violet-dark:#5335d6; --mint:#0e9f7a; --amber:#e8930c; --red:#d64545;
+    --radius:18px; --shadow:0 18px 45px rgba(23,20,31,.09);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:var(--violet-dark);text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  /* Nav */
+  header{position:sticky;top:0;background:rgba(250,249,247,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:20}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-weight:800;letter-spacing:-.02em;font-size:1.05rem;color:var(--ink)}
+  .logo span{color:var(--violet)}
+  .nav nav{display:flex;gap:26px;font-size:.95rem}
+  .nav nav a{color:var(--muted);font-weight:600}
+  .nav nav a:hover{color:var(--ink)}
+  .btn{display:inline-block;background:var(--violet);color:#fff;padding:11px 20px;border-radius:999px;font-weight:700;border:0;cursor:pointer}
+  .btn:hover{background:var(--violet-dark)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--ink)}
+  @media(max-width:720px){.nav nav{display:none}}
+  /* Hero */
+  .hero{padding:76px 0 56px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  @media(max-width:900px){.hero{grid-template-columns:1fr}}
+  .eyebrow{display:inline-block;background:#efeaff;color:var(--violet-dark);font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:18px}
+  h1{font-size:clamp(2.3rem,5vw,3.6rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:18px}
+  h1 em{font-style:normal;color:var(--violet)}
+  .lead{font-size:1.13rem;color:var(--muted);max-width:56ch;margin-bottom:26px}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px}
+  .stats{display:flex;gap:28px;flex-wrap:wrap}
+  .stat b{display:block;font-size:1.5rem;letter-spacing:-.02em}
+  .stat span{color:var(--muted);font-size:.9rem}
+  /* Dashboard mock (portfolio piece, built in pure HTML/CSS) */
+  .mock{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+  .mock-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .dot{width:11px;height:11px;border-radius:50%}
+  .mock-title{margin-left:8px;font-size:.85rem;color:var(--muted);font-weight:600}
+  .mock-body{padding:18px}
+  .mock-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .pill{font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:999px}
+  .pill.ok{background:#e2f6ef;color:#08785a}.pill.warn{background:#fdf0da;color:#9a6400}.pill.alert{background:#fde7e7;color:#a82f2f}
+  .bars{display:grid;gap:10px;margin:14px 0}
+  .bar{height:10px;border-radius:99px;background:#eeeafc;overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:99px;background:var(--violet)}
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .mini{border:1px solid var(--line);border-radius:12px;padding:10px}
+  .mini b{display:block;font-size:1rem}
+  .mini span{font-size:.78rem;color:var(--muted)}
+  .mock figcaption{padding:0 18px 16px;color:var(--muted);font-size:.85rem}
+  /* Sections */
+  section{padding:56px 0}
+  .kicker{color:var(--violet-dark);font-weight:800;letter-spacing:.07em;text-transform:uppercase;font-size:.8rem;margin-bottom:10px}
+  h2{font-size:clamp(1.7rem,3.4vw,2.3rem);letter-spacing:-.025em;line-height:1.15;margin-bottom:14px}
+  .sub{color:var(--muted);max-width:68ch;margin-bottom:32px}
+  .grid{display:grid;gap:18px}
+  .grid.c2{grid-template-columns:repeat(2,1fr)} .grid.c3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:900px){.grid.c2,.grid.c3{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .card h3{font-size:1.08rem;margin-bottom:8px;letter-spacing:-.01em}
+  .card p,.card li{color:var(--muted);font-size:.96rem}
+  .card ul{padding-left:18px;display:grid;gap:5px;margin-top:8px}
+  .tag{display:inline-block;font-size:.75rem;font-weight:700;background:#f1eefc;color:var(--violet-dark);padding:4px 9px;border-radius:999px;margin:0 5px 6px 0}
+  .meta{font-size:.85rem;font-weight:700;color:var(--violet-dark);margin-bottom:6px}
+  /* Process */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:900px){.steps{grid-template-columns:1fr}}
+  .step{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .step .n{width:36px;height:36px;border-radius:50%;background:var(--violet);color:#fff;display:grid;place-items:center;font-weight:800;margin-bottom:12px}
+  .step p{color:var(--muted);font-size:.95rem}
+  /* Design system demo */
+  .ds{background:#17141f;color:#f4f2ff;border-radius:24px;padding:34px}
+  .ds h2{color:#fff}.ds .sub{color:#bdb7d6}
+  .swatches{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+  .sw{width:104px}
+  .sw i{display:block;height:56px;border-radius:12px;margin-bottom:7px}
+  .sw span{font-size:.8rem;color:#d9d5ef}
+  .demo{display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:#221d33;border:1px solid #383152;border-radius:16px;padding:18px}
+  .demo .btn.ghost{color:#fff;border-color:#4a4370}
+  .alert{border-radius:12px;padding:10px 14px;font-size:.9rem;font-weight:600}
+  .alert.ok{background:#0f3d31;color:#7ee2c3}.alert.warn{background:#453211;color:#ffd58a}
+  /* Timeline */
+  .job{display:grid;grid-template-columns:190px 1fr;gap:22px;padding:24px 0;border-bottom:1px solid var(--line)}
+  @media(max-width:720px){.job{grid-template-columns:1fr}}
+  .job .when{color:var(--muted);font-weight:700;font-size:.92rem}
+  .job h3{font-size:1.12rem}
+  .job .co{color:var(--violet-dark);font-weight:700;margin-bottom:8px}
+  .job ul{padding-left:18px;color:var(--muted);display:grid;gap:5px;font-size:.96rem}
+  .env{margin-top:10px;font-size:.85rem;color:var(--muted)}
+  /* Contact / footer */
+  .contact{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:38px;text-align:center}
+  .contact p{color:var(--muted);max-width:55ch;margin:0 auto 22px}
+  footer{padding:28px 0 40px;color:var(--muted);font-size:.9rem;text-align:center}
+  .skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px 12px;z-index:50}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">Ganesh Goud Padimela<span>.</span></a>
+    <nav aria-label="Primary">
+      <a href="#work">Work</a><a href="#process">Process</a><a href="#system">Design System</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+    </nav>
+    <a class="btn" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <!-- HERO -->
+  <div class="hero" id="top">
+    <div>
+      <span class="eyebrow">Senior UI/UX Engineer</span>
+      <h1>Designing clear interfaces for <em>complex</em> enterprise systems.</h1>
+      <p class="lead">I combine UX design and hands-on front-end development — 9+ years turning dense operational workflows into clear navigation, strong visual hierarchy, and production-quality Vue.js interfaces across retail, e-commerce, telecommunications, healthcare, and information services.</p>
+      <div class="cta">
+        <a class="btn" href="#work">View selected work</a>
+        <a class="btn ghost" href="#experience">Experience</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>9+ years</b><span>UI/UX + front-end</span></div>
+        <div class="stat"><b>5</b><span>Enterprise domains</span></div>
+        <div class="stat"><b>End-to-end</b><span>Figma → production code</span></div>
+      </div>
+    </div>
+    <figure class="mock" aria-label="Example operational dashboard interface designed and built by Ganesh">
+      <div class="mock-bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span><span class="mock-title">Operations Dashboard — status at a glance</span></div>
+      <div class="mock-body">
+        <div class="mock-row"><strong>Equipment Status</strong><span class="pill ok">● Operational</span></div>
+        <div class="bars"><div class="bar"><i style="width:82%"></i></div><div class="bar"><i style="width:64%;background:var(--mint)"></i></div><div class="bar"><i style="width:41%;background:var(--amber)"></i></div></div>
+        <div class="mock-row"><span class="pill warn">Alarm — Zone B</span><span class="pill alert">Diagnostics due</span><span class="pill ok">Live · WebSocket</span></div>
+        <div class="cards3">
+          <div class="mini"><b>Orders</b><span>Created / refunds / adjustments</span></div>
+          <div class="mini"><b>3D View</b><span>Three.js · WebGL · real-time</span></div>
+          <div class="mini"><b>Access</b><span>Role-based · WCAG · i18n</span></div>
+        </div>
+      </div>
+      <figcaption>Representative pattern from my work: information-dense operational dashboards made readable — clear status, hierarchy, and live updates.</figcaption>
+    </figure>
+  </div>
+
+  <!-- WORK -->
+  <section id="work">
+    <p class="kicker">Selected Work</p>
+    <h2>Case studies</h2>
+    <p class="sub">Each engagement paired UX design with direct implementation — evaluating existing screens, prototyping in Figma, building a reusable component system, and shipping responsive Vue.js interfaces inside the existing MVVM architecture and APIs.</p>
+    <div class="grid c2">
+      <article class="card">
+        <p class="meta">WALMART · 2024 — PRESENT</p>
+        <h3>Marketplace Payments &amp; Operational Interfaces</h3>
+        <p>Order creation, sales, refunds, and adjustments — plus robotics, warehouse execution, and material-handling workflows.</p>
+        <ul>
+          <li>Evaluated existing screens and workflows; simplified complex operational information through redesigned information architecture and visual hierarchy.</li>
+          <li>Built Figma wireframes, mockups, and interactive prototypes, refined through structured user reviews.</li>
+          <li>Created a reusable design system and component library aligned to brand standards.</li>
+          <li>Built Three.js/WebGL real-time 3D visualizations with WebSocket live updates for movement, equipment states, alarms, and diagnostics.</li>
+        </ul>
+        <p style="margin-top:12px"><span class="tag">Vue.js</span><span class="tag">Figma</span><span class="tag">Three.js / WebGL</span><span class="tag">Design Systems</span><span class="tag">WCAG</span><span class="tag">i18n</span></p>
+      </article>
+      <article class="card">
+        <p class="meta">ABERCROMBIE &amp; FITCH · 2022 — 2024</p>
+        <h3>E-commerce Inventory &amp; Clearance</h3>
+        <p>Inventory, stock reconciliation, pricing, and clearance applications for retail operations.</p>
+        <ul>
+          <li>Redesigned inventory and clearance workflows in Vue.js with responsive HTML5/CSS3.</li>
+          <li>Prototyped in Figma and built design-system components for dense data tables, filters, forms, navigation, dialogs, and alerts.</li>
+          <li>Used Three.js/WebGL and WebSockets for real-time operational visualization and status monitoring.</li>
+          <li>Shipped localized, role-based, accessible interfaces with automated front-end tests.</li>
+        </ul>
+        <p style="margin-top:12px"><span class="tag">Vue.js</span><span class="tag">Data Tables</span><span class="tag">Prototyping</span><span class="tag">Localization</span><span class="tag">Testing</span></p>
+      </article>
+      <article class="card">
+        <p class="meta">AMERICAN TOWER · 2021 — 2022</p>
+        <h3>Telecom Infrastructure &amp; Geospatial Monitoring</h3>
+        <p>Infrastructure applications with geospatial and operational monitoring features.</p>
+        <ul>
+          <li>Translated complex monitoring workflows into clear navigation and responsive Vue.js interfaces.</li>
+          <li>Designed Figma prototypes and reusable components for tables, forms, dialogs, and status indicators.</li>
+          <li>Built Three.js/WebGL visualizations with real-time updates alongside ArcGIS and Mapbox features.</li>
+          <li>Ran structured usability reviews and incorporated end-user feedback into delivery.</li>
+        </ul>
+        <p style="margin-top:12px"><span class="tag">Vue.js</span><span class="tag">ArcGIS / Mapbox</span><span class="tag">Three.js</span><span class="tag">Usability Reviews</span></p>
+      </article>
+      <article class="card">
+        <p class="meta">TAMPA GENERAL HOSPITAL · 2019 — 2020</p>
+        <h3>Healthcare Clinical &amp; Administrative Workflows</h3>
+        <p>Applications supporting clinical and administrative operational workflows.</p>
+        <ul>
+          <li>Worked directly with healthcare professionals and administrators to simplify complex workflows.</li>
+          <li>Created Figma wireframes and interactive prototypes, then implemented responsive Vue.js interfaces.</li>
+          <li>Built reusable components and design standards for navigation, forms, tables, and status indicators.</li>
+          <li>Applied multilingual layouts, role-based controls, and WCAG accessibility practices.</li>
+        </ul>
+        <p style="margin-top:12px"><span class="tag">Vue.js</span><span class="tag">Figma</span><span class="tag">Accessibility</span><span class="tag">Design Standards</span></p>
+      </article>
+      <article class="card">
+        <p class="meta">THOMSON REUTERS · 2017 — 2019</p>
+        <h3>Enterprise Information Applications</h3>
+        <p>Complex technical workflows for enterprise information services.</p>
+        <ul>
+          <li>Improved navigation, visual hierarchy, and usability of existing interfaces — without a ground-up rewrite.</li>
+          <li>Created wireframes, mockups, and Figma prototypes to explain UX decisions and review alternatives with users and developers.</li>
+          <li>Built reusable component libraries and real-time Three.js/WebGL visualizations.</li>
+          <li>Documented UI architecture and components for engineering handoff and knowledge transfer.</li>
+        </ul>
+        <p style="margin-top:12px"><span class="tag">Vue.js</span><span class="tag">Component Libraries</span><span class="tag">WebGL</span><span class="tag">Documentation</span></p>
+      </article>
+      <article class="card">
+        <p class="meta">SPECIALTY</p>
+        <h3>Real-Time 3D &amp; Operational Dashboards</h3>
+        <p>A recurring thread across roles: making live, information-dense systems easy to interpret.</p>
+        <ul>
+          <li>Interactive Three.js/WebGL visualization of movement, equipment, and infrastructure states.</li>
+          <li>WebSocket-driven live updates for monitoring, alarms, configuration, and diagnostics.</li>
+          <li>Warehouse, robotics, automation, and material-handling interface patterns.</li>
+        </ul>
+        <p style="margin-top:12px"><span class="tag">Three.js</span><span class="tag">WebGL</span><span class="tag">WebSockets</span><span class="tag">Data Visualization</span></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <p class="kicker">How I Work</p>
+    <h2>Design process</h2>
+    <p class="sub">Design and code are one loop in my work — prototypes are validated with users, then implemented as maintainable, tested components.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Evaluate</h3><p>Audit existing screens, navigation, and workflows with users and stakeholders; find where hierarchy and interaction break down.</p></div>
+      <div class="step"><div class="n">2</div><h3>Wireframe &amp; Prototype</h3><p>Figma wireframes, mockups, and interactive prototypes to test alternatives early through structured user reviews.</p></div>
+      <div class="step"><div class="n">3</div><h3>Systematize</h3><p>Turn patterns into a documented design system — typography, color, spacing, icons, and reusable components.</p></div>
+      <div class="step"><div class="n">4</div><h3>Build</h3><p>Production Vue.js within MVVM architecture, responsive HTML5/CSS3, REST API integration, and Git-based code reviews.</p></div>
+      <div class="step"><div class="n">5</div><h3>Make it inclusive</h3><p>WCAG accessibility, internationalization with layouts that handle text expansion, and role-based navigation and controls.</p></div>
+      <div class="step"><div class="n">6</div><h3>Test &amp; Hand Off</h3><p>Automated and regression testing, UI architecture documentation, component guidance, and developer knowledge-transfer sessions.</p></div>
+    </div>
+  </section>
+
+  <!-- DESIGN SYSTEM -->
+  <section id="system">
+    <div class="ds">
+      <p class="kicker" style="color:#c9bfff">Design Systems</p>
+      <h2>One system, every screen consistent</h2>
+      <p class="sub">I build and document reusable component libraries covering typography, colors, spacing, icons, navigation, forms, tables, dialogs, alerts, notifications, and status indicators — so teams ship consistent, branded interfaces faster. This page itself follows that discipline:</p>
+      <div class="swatches" aria-label="Color palette used on this page">
+        <div class="sw"><i style="background:#6c4cf1"></i><span>Primary · Violet</span></div>
+        <div class="sw"><i style="background:#0e9f7a"></i><span>Success · Mint</span></div>
+        <div class="sw"><i style="background:#e8930c"></i><span>Warning · Amber</span></div>
+        <div class="sw"><i style="background:#d64545"></i><span>Alert · Red</span></div>
+        <div class="sw"><i style="background:#17141f;border:1px solid #4a4370"></i><span>Ink · Near-black</span></div>
+      </div>
+      <div class="demo" aria-label="Live component examples">
+        <button class="btn" type="button">Primary action</button>
+        <button class="btn ghost" type="button">Secondary</button>
+        <span class="alert ok">✓ Status: Operational</span>
+        <span class="alert warn">! Alarm needs review</span>
+        <span class="pill ok">● Live</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="kicker">Toolkit</p>
+    <h2>Technical skills</h2>
+    <p class="sub"></p>
+    <div class="grid c3">
+      <div class="card"><h3>Front End</h3><p>JavaScript, Vue.js, MVVM, HTML5, CSS3, responsive web applications, REST API integration, Git</p></div>
+      <div class="card"><h3>3D &amp; Real-Time</h3><p>Three.js, WebGL, interactive real-time 3D visualization, WebSockets, data visualization</p></div>
+      <div class="card"><h3>UX &amp; Design</h3><p>Figma, wireframes, mockups, interactive prototypes, information architecture, visual hierarchy, interaction design, usability, workflow evaluation</p></div>
+      <div class="card"><h3>Design Systems</h3><p>Reusable component libraries, typography, color, spacing, icons, navigation, forms, tables, dialogs, alerts, notifications, status indicators</p></div>
+      <div class="card"><h3>Quality &amp; Delivery</h3><p>Accessibility (WCAG), internationalization/localization, role-based UI, automated &amp; regression testing, Agile/Scrum, code reviews, CI/CD</p></div>
+      <div class="card"><h3>Supporting Technologies</h3><p>Java, Spring Boot, Python, SQL, MongoDB, Cassandra, Kafka, AWS, Docker, Kubernetes, Jenkins</p></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="kicker">Career</p>
+    <h2>Experience</h2>
+    <div class="job"><div class="when">Aug 2024 — Present<br>Sunnyvale, CA</div><div><h3>Software Engineer</h3><p class="co">Walmart</p><ul><li>UX redesign + Vue.js implementation for marketplace payments and operational interfaces.</li><li>Figma prototypes, design system/component library, Three.js/WebGL real-time 3D with WebSockets.</li><li>i18n, role-based UI, WCAG, automated testing, and developer knowledge transfer.</li></ul></div></div>
+    <div class="job"><div class="when">Oct 2022 — Jul 2024<br>Valparaiso, IN</div><div><h3>Software Engineer</h3><p class="co">Abercrombie &amp; Fitch Co.</p><ul><li>Redesigned e-commerce inventory, reconciliation, pricing, and clearance workflows in Vue.js.</li><li>Figma prototypes and design-system components for dense tables, filters, and forms.</li><li>Real-time visualization, localization, accessibility, and automated tests.</li></ul></div></div>
+    <div class="job"><div class="when">Jan 2021 — Sep 2022<br>Chicago, IL</div><div><h3>Software Engineer</h3><p class="co">American Tower</p><ul><li>Clear information architecture for telecom infrastructure and monitoring workflows.</li><li>Figma prototypes, reusable components, Three.js/WebGL + ArcGIS/Mapbox visualization.</li><li>Usability reviews, i18n, WCAG, and documented UI architecture.</li></ul></div></div>
+    <div class="job"><div class="when">Jun 2019 — Dec 2020<br>Tampa, FL</div><div><h3>Software Engineer</h3><p class="co">Tampa General Hospital</p><ul><li>Simplified clinical and administrative workflows with clinicians and administrators.</li><li>Figma wireframes/prototypes implemented as responsive Vue.js interfaces.</li><li>Reusable components, multilingual layouts, role-based controls, WCAG practices.</li></ul></div></div>
+    <div class="job"><div class="when">May 2017 — May 2019<br>Hyderabad, India</div><div><h3>Software Engineer</h3><p class="co">Thomson Reuters</p><ul><li>Design + implementation of enterprise information interfaces; improved usability without a rewrite.</li><li>Wireframes, Figma prototypes, reusable component libraries, Three.js/WebGL visualization.</li><li>Role-based UI, multilingual layouts, accessibility, testing, and handoff documentation.</li></ul></div></div>
+    <div style="padding-top:24px">
+      <p class="kicker">Education</p>
+      <p><strong>Master of Science in Information Technology</strong> — Valparaiso University<br>
+      <strong>Bachelor of Science in Computer Science and Engineering</strong> — Jawaharlal Nehru Technological University</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact">
+      <p class="kicker">Contact</p>
+      <h2>Let’s build clearer interfaces</h2>
+      <p>Open to UI/UX engineering roles where design and front-end development meet — especially complex, data-dense, or real-time products.</p>
+      <div class="cta" style="justify-content:center;margin-bottom:0">
+        <a class="btn" href="mailto:gpadimela@gmail.com">gpadimela@gmail.com</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/ganeshgoudp" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 Ganesh Goud Padimela — Senior UI/UX Engineer. Designed and built by hand with semantic HTML/CSS — accessible, responsive, no frameworks.</div></footer>
+</body>
+</html>
