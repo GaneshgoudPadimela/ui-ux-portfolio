@@ -12,6 +12,6 @@ Highlights: Vue.js / MVVM, Figma wireframes & interactive prototypes, reusable d
 
 ## This site
 
-Single self-contained `index.html` — semantic, accessible, responsive, no frameworks or build step. Sections: Selected Work (case studies), Design Process, Design System, Skills, Experience, Education, Contact.
+Single self-contained `index.html` — semantic, accessible, responsive, no frameworks or build step. Sections: Flagship Robotics & Warehouse focus, a LIVE interactive warehouse robotics dashboard prototype (clickable robots, alarms, diagnostics, role-based controls, language/text-expansion switcher), a Before/After redesign comparison, Wireframe → Prototype → Production visuals, Selected Work (case studies), Design Process, Design System, Skills, Experience, Education, Contact. All demos are working rebuilds of interface patterns — client screens are confidential, so no proprietary screenshots are used.
 
 Contact: gpadimela@gmail.com · LinkedIn: https://www.linkedin.com/in/ganeshgoudp

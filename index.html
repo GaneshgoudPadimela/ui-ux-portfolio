@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ganesh Goud Padimela — Senior UI/UX Engineer</title>
-<meta name="description" content="Senior UI/UX Engineer with 9+ years combining UX design and front-end development — Vue.js, Figma, design systems, Three.js/WebGL, and accessible enterprise interfaces.">
+<meta name="description" content="Senior UI/UX Engineer with 9+ years combining UX design and front-end development for robotics, warehouse automation and enterprise systems — Vue.js/MVVM, Figma, design systems, Three.js/WebGL real-time 3D, and accessible operational dashboards.">
 <style>
   :root{
     --bg:#faf9f7; --surface:#ffffff; --ink:#17141f; --muted:#5d586e; --line:#e8e4de;
@@ -102,6 +102,52 @@
   .contact p{color:var(--muted);max-width:55ch;margin:0 auto 22px}
   footer{padding:28px 0 40px;color:var(--muted);font-size:.9rem;text-align:center}
   .skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px 12px;z-index:50}
+
+  /* ===== Interactive demo ===== */
+  .demo-shell{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+  .demo-toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line);background:#fbfaf8}
+  .demo-toolbar label{font-size:.82rem;font-weight:700;color:var(--muted)}
+  .demo-toolbar select,.demo-toolbar button{font:inherit;font-size:.88rem;font-weight:600;padding:7px 12px;border-radius:9px;border:1.5px solid var(--line);background:#fff;cursor:pointer}
+  .demo-toolbar button.primary{background:var(--violet);border-color:var(--violet);color:#fff}
+  .demo-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:0}
+  @media(max-width:900px){.demo-grid{grid-template-columns:1fr}}
+  .stage{padding:16px;border-right:1px solid var(--line)}
+  @media(max-width:900px){.stage{border-right:0;border-bottom:1px solid var(--line)}}
+  canvas#wh{width:100%;height:auto;display:block;background:#10131f;border-radius:14px}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:.82rem;color:var(--muted)}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:5px}
+  .side{padding:16px;display:grid;gap:14px;align-content:start}
+  .panel{border:1px solid var(--line);border-radius:14px;padding:14px}
+  .panel h4{font-size:.95rem;margin-bottom:8px}
+  .panel p,.panel li{font-size:.88rem;color:var(--muted)}
+  .panel ul{padding-left:17px;display:grid;gap:4px}
+  .meter{height:9px;background:#eeeafc;border-radius:99px;overflow:hidden;margin:6px 0 10px}
+  .meter i{display:block;height:100%;background:var(--mint)}
+  .feed{display:grid;gap:8px;max-height:190px;overflow:auto}
+  .feed div{font-size:.83rem;border-left:4px solid var(--mint);background:#f6fbf9;border-radius:8px;padding:7px 10px}
+  .feed div.warn{border-color:var(--amber);background:#fdf8ec}
+  .feed div.alert{border-color:var(--red);background:#fdf1f1}
+  .note{font-size:.85rem;color:var(--muted);margin-top:12px}
+  /* before / after */
+  .ba-toggle{display:flex;gap:10px;margin-bottom:16px}
+  .ba-toggle button{font:inherit;font-weight:700;padding:9px 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;cursor:pointer}
+  .ba-toggle button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .ba-old{font-family:Arial,sans-serif;background:#dcdcdc;border:2px solid #888;padding:12px;color:#222}
+  .ba-old table{width:100%;border-collapse:collapse;font-size:11px}
+  .ba-old th,.ba-old td{border:1px solid #777;padding:3px;background:#efefef;text-align:left}
+  .ba-old h4{font-size:14px;color:#a00;text-transform:none;margin-bottom:8px}
+  .hidden{display:none !important}
+  /* wireframe strip */
+  .strip{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:stretch}
+  @media(max-width:900px){.strip{grid-template-columns:1fr}.arrow{transform:rotate(90deg);justify-self:center}}
+  .frame{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
+  .frame .cap{font-size:.8rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--violet-dark);margin-bottom:10px}
+  .wf div{border:2px solid #b9b3c9;border-radius:6px;height:16px;margin-bottom:8px}
+  .wf div.tall{height:52px;background:repeating-linear-gradient(45deg,#fff,#fff 6px,#efece6 6px,#efece6 12px)}
+  .arrow{align-self:center;font-size:1.5rem;color:var(--violet);font-weight:800}
+  .flag{background:linear-gradient(135deg,#17141f,#2b2350);color:#f4f2ff;border-radius:24px;padding:34px}
+  .flag h2{color:#fff}.flag p{color:#c9c3e6;max-width:70ch}
+  .flag .tag{background:#2e2854;color:#d9d2ff}
 </style>
 </head>
 <body>
@@ -110,7 +156,7 @@
   <div class="wrap nav">
     <a class="logo" href="#top">Ganesh Goud Padimela<span>.</span></a>
     <nav aria-label="Primary">
-      <a href="#work">Work</a><a href="#process">Process</a><a href="#system">Design System</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+      <a href="#demo">Live Demo</a><a href="#work">Work</a><a href="#process">Process</a><a href="#system">Design System</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
     </nav>
     <a class="btn" href="#contact">Get in touch</a>
   </div>
@@ -148,6 +194,96 @@
       <figcaption>Representative pattern from my work: information-dense operational dashboards made readable — clear status, hierarchy, and live updates.</figcaption>
     </figure>
   </div>
+
+
+  <!-- FLAGSHIP: ROBOTICS & WAREHOUSE -->
+  <section id="demo" style="padding-bottom:8px">
+    <div class="flag">
+      <p class="kicker" style="color:#c9bfff">Flagship Focus</p>
+      <h2>Robotics &amp; warehouse automation interfaces</h2>
+      <p>My most recent work applies UI/UX design and Vue.js development to robotics, warehouse execution, and material-handling workflows — live equipment status, alarms, configuration, diagnostics, and real-time 3D visualization of robots and systems, presented so operators can act fast and correctly. The live prototype below demonstrates exactly those patterns.</p>
+      <p style="margin-top:14px"><span class="tag">Vue.js · MVVM</span><span class="tag">Three.js / WebGL</span><span class="tag">WebSockets · Live data</span><span class="tag">Operational dashboards</span><span class="tag">Alarms &amp; diagnostics</span><span class="tag">Design system for handoff</span></p>
+    </div>
+  </section>
+
+  <!-- LIVE INTERACTIVE DEMO -->
+  <section aria-label="Interactive warehouse robotics dashboard prototype">
+    <p class="kicker">Interactive Work Sample — Try It</p>
+    <h2>Live warehouse robotics dashboard prototype</h2>
+    <p class="sub">Client screens from my roles are confidential, so instead of static screenshots this is a <strong>working rebuild of the interface patterns I design and build</strong>: a live floor view with moving robots, equipment status, an alarm feed, and a diagnostics panel. <strong>Click any robot</strong> on the floor to inspect it. Use the toolbar to switch user roles, switch language (watch long translated labels reflow), pause the live feed, or trigger an alarm.</p>
+    <div class="demo-shell">
+      <div class="demo-toolbar">
+        <button class="primary" id="btnLive" type="button">⏸ Pause live</button>
+        <button id="btnAlarm" type="button">⚠ Trigger alarm</button>
+        <label>Role <select id="selRole" aria-label="User role"><option>Operator</option><option>Supervisor</option><option>Administrator</option></select></label>
+        <label>Language <select id="selLang" aria-label="Language"><option value="en">English</option><option value="es">Español (long labels)</option><option value="de">Deutsch (long labels)</option></select></label>
+        <span id="roleNote" style="font-size:.85rem;color:var(--muted)">Operator view: monitor &amp; acknowledge alarms</span>
+      </div>
+      <div class="demo-grid">
+        <div class="stage">
+          <canvas id="wh" width="680" height="440" role="img" aria-label="Animated warehouse floor with six robots moving between shelving aisles and stations"></canvas>
+          <div class="legend"><span><i style="background:#22c07d"></i><span data-i18n="operational">Operational</span></span><span><i style="background:#f0a020"></i><span data-i18n="warning">Warning</span></span><span><i style="background:#e5484d"></i><span data-i18n="alarm">Alarm / stopped</span></span><span><i style="background:#6c4cf1"></i>Selected robot</span></div>
+          <p class="note" id="demoCaption">Patterns demonstrated: information-dense operational monitoring · live status via streaming updates (WebSocket-style) · equipment alarms, configuration &amp; diagnostics · role-based controls · layouts that absorb translated text expansion · the same status language as a 3D Three.js/WebGL view in production work.</p>
+        </div>
+        <aside class="side">
+          <div class="panel" aria-live="polite">
+            <h4 id="botName">Robot R-104 — Diagnostics</h4>
+            <p>Status: <strong id="botStatus">Operational</strong></p>
+            <p style="margin-top:8px">Battery</p><div class="meter"><i id="botBatt" style="width:82%"></i></div>
+            <ul id="botDiag"><li>Task: Transport tote A-221 to Station 3</li><li>Drive system: Normal</li><li>Last service: 12 days ago</li></ul>
+            <p style="margin-top:10px"><button class="btn" id="btnConfig" type="button" style="padding:8px 14px;font-size:.88rem">Configure</button> <span id="cfgNote" style="font-size:.82rem;color:var(--muted)">Configuration is Supervisor+ only</span></p>
+          </div>
+          <div class="panel">
+            <h4 data-i18n="alarms">Alarms &amp; events</h4>
+            <div class="feed" id="feed">
+              <div>✓ R-102 completed delivery to Station 1</div>
+              <div class="warn">! R-105 battery below 30% — routed to charger</div>
+              <div>✓ Shift throughput on target — 214 totes/hr</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section aria-label="Before and after redesign example">
+    <p class="kicker">Redesign Work Sample</p>
+    <h2>Same data — before &amp; after</h2>
+    <p class="sub">A core part of my work is taking an existing application and making it look and work better <em>without</em> a ground-up rewrite. Toggle to compare the same equipment list as a legacy screen vs. my redesign pattern: hierarchy, spacing, status language, and scannability.</p>
+    <div class="ba-toggle" role="group" aria-label="Toggle before and after">
+      <button id="baBefore" type="button">Before — legacy</button>
+      <button id="baAfter" type="button" class="on">After — redesign</button>
+    </div>
+    <div id="baOld" class="ba-old hidden" aria-label="Legacy interface example">
+      <h4>EQUIP_STATUS_SCRN (F5=Refresh F9=Print ESC=Exit)</h4>
+      <table><tr><th>ID</th><th>NM</th><th>ST</th><th>LOC</th><th>ERR_CD</th><th>LST_UPD</th><th>OP</th></tr>
+      <tr><td>104</td><td>RBT-A</td><td>RUN</td><td>ZNE-B/ISL-04</td><td>0000</td><td>06:12:44</td><td>JD</td></tr>
+      <tr><td>105</td><td>RBT-B</td><td>CHRG</td><td>CHR-02</td><td>0317</td><td>06:11:02</td><td>JD</td></tr>
+      <tr><td>107</td><td>RBT-C</td><td>ERR</td><td>ZNE-A/ISL-01</td><td>1042</td><td>05:58:19</td><td>MKT</td></tr>
+      <tr><td>109</td><td>RBT-D</td><td>RUN</td><td>STN-03</td><td>0000</td><td>06:12:40</td><td>MKT</td></tr></table>
+      <p style="font-size:11px;margin-top:8px">Coded abbreviations · error codes with no explanation · no hierarchy · alarm hidden in a table row · refresh is manual.</p>
+    </div>
+    <div id="baNew" class="grid c3" aria-label="Redesigned interface example">
+      <div class="card"><p class="meta">R-104 · ZONE B, AISLE 4</p><h3>🟢 Operational</h3><p>Transporting tote A-221 to Station 3. Battery 82%. No action needed.</p></div>
+      <div class="card"><p class="meta">R-105 · CHARGER 2</p><h3>🟡 Charging — battery low</h3><p>Battery 24%. Automatically routed to Charger 2; returns to work at 80%.</p></div>
+      <div class="card"><p class="meta">R-107 · ZONE A, AISLE 1</p><h3>🔴 Stopped — needs attention</h3><p>Path blocked for 14 min. Plain-language cause, location, and one clear next step: <strong>Dispatch support</strong>.</p></div>
+    </div>
+  </section>
+
+  <!-- WIREFRAME TO FINAL -->
+  <section aria-label="Wireframe to prototype to final UI">
+    <p class="kicker">Process — Visual</p>
+    <h2>Wireframe → prototype → production UI</h2>
+    <p class="sub">How a screen evolves in my process: structure first, then an interactive Figma prototype reviewed with users, then production Vue.js built on the design system.</p>
+    <div class="strip">
+      <div class="frame wf"><p class="cap">1 · Wireframe (low-fi)</p><div></div><div class="tall"></div><div></div><div style="width:55%"></div><p class="note">Layout, hierarchy, and workflow only — no visual design yet.</p></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="frame"><p class="cap">2 · Interactive prototype (Figma)</p><div class="mini" style="margin-bottom:8px"><b>Dashboard</b><span>Clickable flows, real terminology, reviewed with warehouse users</span></div><div class="mini"><b>Test finding</b><span>“Alarm” wording changed after structured user review</span></div></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="frame"><p class="cap">3 · Production UI (Vue.js)</p><div class="mini" style="margin-bottom:8px"><b>Design-system components</b><span>Tables, dialogs, alerts, status indicators</span></div><div class="mini"><b>Shipped quality</b><span>Responsive · WCAG · i18n · automated tests</span></div></div>
+    </div>
+  </section>
 
   <!-- WORK -->
   <section id="work">
@@ -312,5 +448,81 @@
   </section>
 </main>
 <footer><div class="wrap">© 2026 Ganesh Goud Padimela — Senior UI/UX Engineer. Designed and built by hand with semantic HTML/CSS — accessible, responsive, no frameworks.</div></footer>
+
+<script>
+(function(){
+  var cv=document.getElementById('wh'); if(!cv) return;
+  var ctx=cv.getContext('2d'), W=cv.width, H=cv.height, live=true, tick=0;
+  var bots=[
+    {id:'R-101',x:90,y:90,path:[[90,90],[300,90],[300,200],[90,200]],i:0,s:.9,st:'ok',batt:91,task:'Deliver tote B-118 to Station 1'},
+    {id:'R-102',x:520,y:80,path:[[520,80],[520,210],[350,210],[350,80]],i:0,s:.7,st:'ok',batt:76,task:'Pick tote from Aisle 6 shelving'},
+    {id:'R-103',x:120,y:330,path:[[120,330],[420,330],[420,390],[120,390]],i:0,s:.8,st:'ok',batt:64,task:'Return empty totes to intake'},
+    {id:'R-104',x:300,y:150,path:[[300,150],[560,150],[560,300],[300,300]],i:0,s:1,st:'ok',batt:82,task:'Transport tote A-221 to Station 3'},
+    {id:'R-105',x:590,y:360,path:[[590,360],[590,360]],i:0,s:0,st:'warn',batt:24,task:'Charging at Charger 2'},
+    {id:'R-106',x:180,y:250,path:[[180,250],[480,250],[480,120],[180,120]],i:0,s:.6,st:'ok',batt:88,task:'Move pallet wrap to packing'}
+  ];
+  var sel=bots[3];
+  function draw(){
+    ctx.fillStyle='#10131f'; ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle='rgba(255,255,255,.06)';
+    for(var g=0;g<W;g+=34){ctx.beginPath();ctx.moveTo(g,0);ctx.lineTo(g,H);ctx.stroke();}
+    for(var g2=0;g2<H;g2+=34){ctx.beginPath();ctx.moveTo(0,g2);ctx.lineTo(W,g2);ctx.stroke();}
+    ctx.fillStyle='#232842';
+    [[40,40,180,26],[40,150,180,26],[380,40,220,26],[380,150,220,26],[40,270,180,26],[380,270,220,26]].forEach(function(r){ctx.fillRect(r[0],r[1],r[2],r[3]);});
+    ctx.fillStyle='#8f96b8'; ctx.font='11px system-ui';
+    ctx.fillText('SHELVING A',44,32); ctx.fillText('SHELVING B',384,32); ctx.fillText('SHELVING C',44,262);
+    ctx.fillStyle='#2b3157'; [[560,385,90,36],[40,385,90,36],[560,40,90,36]].forEach(function(r){ctx.fillRect(r[0],r[1],r[2],r[3]);});
+    ctx.fillStyle='#c9cdf0'; ctx.fillText('STATION 3',572,407); ctx.fillText('STATION 1',52,407); ctx.fillText('CHARGER 2',568,62);
+    bots.forEach(function(b){
+      var col=b.st==='ok'?'#22c07d':(b.st==='warn'?'#f0a020':'#e5484d');
+      if(b===sel){ctx.beginPath();ctx.arc(b.x,b.y,19,0,7);ctx.strokeStyle='#6c4cf1';ctx.lineWidth=3;ctx.stroke();}
+      ctx.beginPath();ctx.arc(b.x,b.y,13,0,7);ctx.fillStyle=col;ctx.fill();
+      ctx.fillStyle='#0c0e18';ctx.font='bold 8px system-ui';ctx.textAlign='center';ctx.fillText(b.id.slice(2),b.x,b.y+3);ctx.textAlign='left';
+      ctx.fillStyle='#e8eaf6';ctx.font='10px system-ui';ctx.fillText(b.id,b.x-14,b.y-20);
+    });
+  }
+  function step(){
+    if(live){ tick++;
+      bots.forEach(function(b){ if(!b.path||b.path.length<2) return;
+        var t=b.path[(b.i+1)%b.path.length], dx=t[0]-b.x, dy=t[1]-b.y, d=Math.hypot(dx,dy);
+        if(d<3){b.i=(b.i+1)%b.path.length;} else {b.x+=dx/d*b.s*2; b.y+=dy/d*b.s*2;}
+        if(tick%240===0 && b.batt>5 && b.st!=='warn') b.batt-=1;
+      });
+    }
+    draw(); requestAnimationFrame(step);
+  }
+  function statusText(b){return b.st==='ok'?'Operational':(b.st==='warn'?'Warning — battery low':'Alarm — stopped');}
+  function show(b){ sel=b;
+    document.getElementById('botName').textContent='Robot '+b.id+' — Diagnostics';
+    document.getElementById('botStatus').textContent=statusText(b);
+    var m=document.getElementById('botBatt'); m.style.width=b.batt+'%'; m.style.background=b.batt<30?'#e5484d':'#0e9f7a';
+    document.getElementById('botDiag').innerHTML='<li>Task: '+b.task+'</li><li>Battery: '+b.batt+'%</li><li>Drive system: '+(b.st==='alarm'?'Fault — path blocked':'Normal')+'</li><li>Last service: 12 days ago</li>';
+  }
+  cv.addEventListener('click',function(e){ var r=cv.getBoundingClientRect(), x=(e.clientX-r.left)*W/r.width, y=(e.clientY-r.top)*H/r.height, best=null,bd=1e9;
+    bots.forEach(function(b){var d=Math.hypot(b.x-x,b.y-y); if(d<bd){bd=d;best=b;}}); if(best&&bd<60) show(best); });
+  var feed=document.getElementById('feed');
+  function addFeed(txt,cls){ var d=document.createElement('div'); if(cls)d.className=cls; d.textContent=txt; feed.prepend(d); while(feed.children.length>6) feed.lastChild.remove(); }
+  document.getElementById('btnLive').addEventListener('click',function(){ live=!live; this.textContent=live?'⏸ Pause live':'▶ Resume live'; addFeed(live?'✓ Live feed resumed':'! Live feed paused by user'); });
+  document.getElementById('btnAlarm').addEventListener('click',function(){ var b=bots[Math.floor(Math.random()*bots.length)]; b.st='alarm'; show(b); addFeed('✕ ALARM: '+b.id+' stopped — path blocked, support dispatched','alert'); });
+  document.getElementById('selRole').addEventListener('click',function(){});
+  document.getElementById('selRole').addEventListener('change',function(){ var v=this.value, n=document.getElementById('roleNote'), c=document.getElementById('cfgNote'), btn=document.getElementById('btnConfig');
+    if(v==='Operator'){n.textContent='Operator view: monitor & acknowledge alarms'; c.textContent='Configuration is Supervisor+ only'; btn.disabled=true; btn.style.opacity=.5;}
+    if(v==='Supervisor'){n.textContent='Supervisor view: + configure equipment & routes'; c.textContent='Configuration enabled for your role'; btn.disabled=false; btn.style.opacity=1;}
+    if(v==='Administrator'){n.textContent='Administrator view: + user roles & access control'; c.textContent='Configuration + access control enabled'; btn.disabled=false; btn.style.opacity=1;}
+    addFeed('✓ View switched to '+v+' role — navigation and controls updated'); });
+  document.getElementById('btnConfig').addEventListener('click',function(){ addFeed('✓ Configuration panel opened for '+sel.id+' (demo)'); });
+  var I18N={en:{operational:'Operational',warning:'Warning',alarm:'Alarm / stopped',alarms:'Alarms & events'},
+            es:{operational:'Operativo',warning:'Advertencia',alarm:'Alarma / detenido',alarms:'Alarmas y eventos del sistema'},
+            de:{operational:'Betriebsbereit',warning:'Warnung',alarm:'Alarm / angehalten',alarms:'Alarme und Systemereignisse'}};
+  document.getElementById('selLang').addEventListener('change',function(){ var L=I18N[this.value];
+    document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(L[k]) el.textContent=L[k]; });
+    addFeed('✓ Language switched — layout absorbs longer translated labels'); });
+  var bo=document.getElementById('baBefore'), bn=document.getElementById('baAfter');
+  function ba(old){ document.getElementById('baOld').classList.toggle('hidden',!old); document.getElementById('baNew').classList.toggle('hidden',old); bo.classList.toggle('on',old); bn.classList.toggle('on',!old); }
+  bo.addEventListener('click',function(){ba(true);}); bn.addEventListener('click',function(){ba(false);});
+  show(sel); document.getElementById('btnConfig').disabled=true; document.getElementById('btnConfig').style.opacity=.5;
+  step();
+})();
+</script>
 </body>
 </html>
